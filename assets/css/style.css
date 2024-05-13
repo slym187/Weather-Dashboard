@@ -1,0 +1,120 @@
+/* styles.css */
+.header {
+    background-color: darkblue;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+/* styles.css */
+
+/* Reset default margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+}
+
+/* Header styles */
+.header {
+    background-color: #3498db;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+.header h1 {
+    margin-bottom: 10px;
+}
+
+/* Container styles */
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Search form styles */
+#search-form {
+    margin-bottom: 20px;
+}
+
+#city-input {
+    padding: 10px;
+    width: 200px;
+}
+
+#search-form button {
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#search-form button:hover {
+    background-color: #2980b9;
+}
+
+/* Current weather styles */
+#current-weather {
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: #ecf0f1;
+    border-radius: 5px;
+}
+
+#current-weather img {
+    width: 100px;
+    height: 100px;
+}
+
+/* Forecast styles */
+#forecast {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-gap: 20px;
+}
+
+.forecast-card {
+    padding: 20px;
+    background-color: #ecf0f1;
+    border-radius: 5px;
+}
+
+.forecast-card img {
+    width: 50px;
+    height: 50px;
+}
+
+/* Search history styles */
+#search-history {
+    margin-top: 20px;
+}
+
+#search-history div {
+    padding: 10px;
+    background-color: #ecf0f1;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+
+#search-history div:hover {
+    background-color: #d5dbdb;
+}
+
+.searched-city {
+    cursor: pointer;
+    color: blue; /* Change color to indicate it's clickable */
+}
