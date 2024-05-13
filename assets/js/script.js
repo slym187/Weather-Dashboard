@@ -20,7 +20,7 @@ function displayCurrentWeather(weatherData) {
         <img src="http://openweathermap.org/img/w/${weatherData.weather[0].icon}.png" alt="Weather Icon">
         <p>Temperature: ${temperatureFahrenheit.toFixed(2)}°F</p>
         <p>Humidity: ${weatherData.main.humidity}%</p>
-        <p>Wind Speed: ${weatherData.wind.speed} m/s</p>
+        <p>Wind Speed: ${weatherData.wind.speed} mph</p>
     `;
 }
 
@@ -45,34 +45,43 @@ function displayForecast(forecastData, weatherData) {
     // Get forecast data for the next 5 days
     forecastData.list.forEach(forecast => {
         const forecastDate = new Date(forecast.dt * 1000);
-        if (forecastDate.getDate() !== currentDate.getDate() && nextFiveDays.length < 5) {
-            nextFiveDays.push(forecast);
+        if (!nextFiveDays.some(item => item.getDate() === forecastDate.getDate()) && nextFiveDays.length < 5) {
+            nextFiveDays.push(forecastDate);
         }
     });
     
     // Display forecast for the next 5 days
-    nextFiveDays.forEach(forecast => {
-        const forecastDate = new Date(forecast.dt * 1000).toDateString();
-        const forecastIcon = `http://openweathermap.org/img/w/${forecast.weather[0].icon}.png`;
-        const temperatureFahrenheit = (forecast.main.temp - 273.15) * 9/5 + 32; // Convert temperature to Fahrenheit
-        const forecastWindSpeed = forecast.wind.speed;
-        const forecastHumidity = forecast.main.humidity;
+    nextFiveDays.forEach(forecastDate => {
+        // Filter forecast data for the current day
+        const filteredForecast = forecastData.list.filter(forecast => {
+            const forecastDateObj = new Date(forecast.dt * 1000);
+            return forecastDateObj.getDate() === forecastDate.getDate();
+        });
+
+        // Extract relevant information from the filtered forecast data
+        const temperatureSum = filteredForecast.reduce((sum, forecast) => sum + forecast.main.temp, 0);
+        const averageTemperature = (temperatureSum / filteredForecast.length - 273.15) * 9/5 + 32; // Convert temperature to Fahrenheit
+        const averageWindSpeed = filteredForecast.reduce((sum, forecast) => sum + forecast.wind.speed, 0) / filteredForecast.length;
+        const averageHumidity = filteredForecast.reduce((sum, forecast) => sum + forecast.main.humidity, 0) / filteredForecast.length;
+        const forecastIcon = `http://openweathermap.org/img/w/${filteredForecast[0].weather[0].icon}.png`; // Construct icon URL
 
         // Create forecast card
         const forecastCard = document.createElement('div');
         forecastCard.classList.add('forecast-card');
         forecastCard.innerHTML = `
-            <p>Date: ${forecastDate}</p>
+            <p>Date: ${forecastDate.toDateString()}</p>
             <img src="${forecastIcon}" alt="Weather Icon">
-            <p>Temperature: ${temperatureFahrenheit.toFixed(2)}°F</p> 
-            <p>Wind Speed: ${forecastWindSpeed} m/s</p>
-            <p>Humidity: ${forecastHumidity}%</p>
+            <p>Average Temperature: ${averageTemperature.toFixed(2)}°F</p>
+            <p>Wind Speed: ${averageWindSpeed.toFixed(2)} mph</p>
+            <p>Humidity: ${averageHumidity.toFixed(2)}%</p>
         `;
 
         // Append forecast card to forecast div
         forecastDiv.appendChild(forecastCard);
     });
 }
+
+
 
 
 // Function to add searched city to search history and local storage

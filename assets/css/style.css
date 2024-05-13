@@ -1,4 +1,4 @@
-/* styles.css */
+
 .header {
     background-color: darkblue;
     color: white;
@@ -6,9 +6,9 @@
     text-align: center;
 }
 
-/* styles.css */
 
-/* Reset default margin and padding */
+
+
 * {
     margin: 0;
     padding: 0;
@@ -23,7 +23,7 @@ body {
 
 /* Header styles */
 .header {
-    background-color: #3498db;
+    background-color: plum;
     color: #fff;
     padding: 20px;
     text-align: center;
@@ -55,7 +55,7 @@ body {
 
 #search-form button {
     padding: 10px 20px;
-    background-color: #3498db;
+    background-color: plum;
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -97,7 +97,7 @@ body {
     height: 50px;
 }
 
-/* Search history styles */
+
 #search-history {
     margin-top: 20px;
 }
@@ -116,5 +116,20 @@ body {
 
 .searched-city {
     cursor: pointer;
-    color: blue; /* Change color to indicate it's clickable */
+    color: purple; /* Change color to indicate it's clickable */
 }
+
+.container {
+    display: flex;
+    flex-direction: row;
+}
+
+.search-container {
+    flex: 1;
+}
+
+.weather-results {
+    flex: 2;
+}
+
+

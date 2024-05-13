@@ -12,14 +12,18 @@
         <h1>Weather Dashboard</h1>
     </div>
     <div class="container">
-        <h2>Search for a City</h2>
-        <form id="search-form">
-            <input type="text" id="city-input" placeholder="Enter city name">
-            <button type="submit">Search</button>
-        </form>
-        <div id="current-weather"></div>
-        <div id="forecast"></div>
-        <div id="search-history"></div>
+        <div class="search-container">
+            <form id="search-form">
+                <input type="text" id="city-input" placeholder="Enter city name">
+                <button type="submit">Search</button>
+            </form>
+            <div id="search-history" class="search-history"></div>
+        </div>
+        <div id="weather-results" class="weather-results">
+            <div id="current-weather" class="current-weather"></div>
+            <div id="forecast" class="forecast"></div>
+        </div>
+
     </div>
     <script src="./assets/js/script.js"></script>
 </body>
