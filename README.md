@@ -10,6 +10,6 @@ This project is a Weather Dashboard, it will allow users to get the current weat
 - chatgpt
 - Xpert learning assistant
 # Link To Deployed Page
-
+https://slym187.github.io/Weather-Dashboard/
 # License
 Please refer to the LICENSE in the repo.
